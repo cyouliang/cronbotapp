@@ -49,7 +49,6 @@ def run():
     now = datetime.now(timezone(timedelta(hours=config.TZ_OFFSET)))
     parsed_time = utils.parse_time_mins(now)
     entries = dbutils.find_entries_by_nextrun(db_service, parsed_time)
-    print("entries are ", entries)
     
     entry_count = len(entries)
     log.log_entry_count(entry_count)
@@ -87,14 +86,17 @@ def batch_jobs(db_service: mongo.MongoService, entries: list, parsed_time: str):
 
 
 def process_job(db_service: mongo.MongoService, entry, parsed_time):
-    serving_entry = dbutils.find_upcoming_entry(mongo.MongoService())
-    print("serving_entry", serving_entry)
+    service_schedule = dbutils.find_upcoming_entry(mongo.MongoService())
+    print("service_schedule", service_schedule)
     job_id = entry["_id"]
     channel_id = entry.get("channel_id", "")
     chat_id = entry.get("chat_id", "")
     if channel_id != "":
         chat_id = channel_id
-    content = entry.get("content", "") + serving_entry[0].get("name", "")
+    if len(service_schedule) > 0:
+        content = entry.get("content", "") + " " + service_schedule[0].get("serving_username", "")
+    else:
+        content = entry.get("content", "")
     content_type = entry.get("content_type", "")
     photo_id = entry.get("photo_id", "")
     photo_group_id = str(entry.get("photo_group_id", ""))

@@ -3,14 +3,13 @@ from common import utils
 from pymongo import MongoClient
 from database.dbutils.dbutils_user import sync_user_data
 
-
 # define service
 class MongoService:
     def __init__(self, update=None, conn_str=config.MONGODB_CONNECTION_STRING):
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
 
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
-        client = MongoClient(conn_str)
+        client = MongoClient(conn_str, tls=True, tlsAllowInvalidCertificates=True)
         db = client[config.MONGODB_DB]
         self.main_collection = db[config.MONGODB_JOB_DATA_COLLECTION]
         self.chat_data_collection = db[config.MONGODB_CHAT_DATA_COLLECTION]
@@ -91,6 +90,7 @@ class MongoService:
     
     def find_upcoming_entry(self, q, sort=None):
         res = self.serving_collection.find(q)
+        print("res from mongoatlast : ", res)
         if sort is not None:
             res = res.sort(sort).limit(1)
         return list(res)
