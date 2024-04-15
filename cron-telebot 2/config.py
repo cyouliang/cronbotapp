@@ -14,7 +14,7 @@ BOT_NAME = "@seewaielle_bot"
 
 """ Telegram config """
 TELEGRAM_BOT_TOKEN = "6921071763:AAEqZZuhZC1223sCEb11PPR0EaCG8vtxsjM"
-BOTHOST = "BOTHOST"# getenv("BOTHOST")  # only required in prod environment, used to set webhook
+BOTHOST = "ec2-13-212-188-55.ap-southeast-1.compute.amazonaws.com"# getenv("BOTHOST")  # only required in prod environment, used to set webhook
 
 
 """ DB config """
