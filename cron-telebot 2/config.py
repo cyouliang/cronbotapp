@@ -5,7 +5,7 @@ load_dotenv()
 
 """ General config """
 # Set ENV to any value to use webhook instead of polling for bot. Must be set in prod environment.
-ENV = getenv("prod")
+ENV = "prod"
 TZ_OFFSET = 8.0  # (UTC+08:00)
 JOB_LIMIT_PER_PERSON = 10
 BATCH_SIZE = 100  # Max number of messages to send at any given time
@@ -14,7 +14,7 @@ BOT_NAME = "@seewaielle_bot"
 
 """ Telegram config """
 TELEGRAM_BOT_TOKEN = "6921071763:AAEqZZuhZC1223sCEb11PPR0EaCG8vtxsjM"
-BOTHOST = "ec2-13-212-188-55.ap-southeast-1.compute.amazonaws.com"# getenv("BOTHOST")  # only required in prod environment, used to set webhook
+BOTHOST = "https://cyl-cronbot.onrender.com/" # only required in prod environment, used to set webhook
 
 
 """ DB config """
