@@ -2,14 +2,17 @@ import config
 from common import utils
 from pymongo import MongoClient
 from database.dbutils.dbutils_user import sync_user_data
+import certifi
 
 # define service
 class MongoService:
     def __init__(self, update=None, conn_str=config.MONGODB_CONNECTION_STRING):
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
 
+        ca = certifi.where()
+        
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
-        client = MongoClient(conn_str, tls=True, tlsAllowInvalidCertificates=True)
+        client = MongoClient(conn_str, tls=True, tlsAllowInvalidCertificates=True, tlsCAFile=ca)
         db = client[config.MONGODB_DB]
         self.main_collection = db[config.MONGODB_JOB_DATA_COLLECTION]
         self.chat_data_collection = db[config.MONGODB_CHAT_DATA_COLLECTION]
