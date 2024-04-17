@@ -9,6 +9,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/L
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from "dayjs";
 import Datetime from 'react-datetime';
+import { PickerChangeHandlerContext, DateValidationError } from "@mui/x-date-pickers/models";
 
 let url = '';
 
@@ -55,7 +56,7 @@ export default function Form() {
         console.log("response is : ", res);
     }
 
-    const handleDateChange = (val, event) => {
+    const handleDateChange = (val: Date, event: PickerChangeHandlerContext<DateValidationError>) => {
         console.log("val is: ", JSON.stringify(val));
         console.log("event is: ", JSON.stringify(event));
         setValues({...values, date: val});
