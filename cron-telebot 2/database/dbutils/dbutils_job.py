@@ -147,6 +147,6 @@ def remove_entries_by_chat(db_service: MongoService, chat_id):
     db_service.update_multiple_entries(q, payload)
 
 def find_upcoming_entry(db_service: MongoService):
-    q = {"date": { "$gt": datetime.now() }}
+    q = {"date": { "$gt": datetime.now().isoformat() }}
     print("q is : ", q)
     return db_service.find_upcoming_entry(q, [("date", ASCENDING)])
