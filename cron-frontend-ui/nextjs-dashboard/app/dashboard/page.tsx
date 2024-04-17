@@ -14,6 +14,14 @@ if(process.env.NODE_ENV !== 'production') {
     url = 'https://cronbot-app.vercel.app/';
 }
 
+type service_schedule = {
+    _id: string,
+    serving_person: string,
+    serving_username: string,
+    email: string,
+    date: Date,
+}
+
 export default function Page() {
     const [ serviceSchedule, setServiceSchedule ] = useState([]);
     const [ scheduleMasterList, setScheduleMasterList ] = useState([]);
@@ -54,7 +62,7 @@ export default function Page() {
                 <h2 className={styles.titleHeader}>Duty Roster</h2>
                 <div className={styles.serviceCard}>
                     {
-                    serviceSchedule.map((entry) => (
+                    serviceSchedule.map((entry: service_schedule) => (
                             <div className={styles.serviceText} key={entry._id}>
                                 <p style={{textDecoration: "underline"}}>Upcoming personnel on duty:</p>
                                 <p>-- {dateFormat(entry.date, "dddd, mmmm dS, yyyy")}</p>
@@ -82,7 +90,7 @@ export default function Page() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {scheduleMasterList.map((entry) => (
+                                {scheduleMasterList.map((entry: service_schedule) => (
                                     <TableRow key={entry._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                         <TableCell component="th" scope="row">{dateFormat(entry.date, "dddd, mmmm dS, yyyy")}</TableCell>
                                         <TableCell>{entry.serving_person}</TableCell>

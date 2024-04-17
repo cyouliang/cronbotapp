@@ -56,7 +56,7 @@ export default function Form() {
         console.log("response is : ", res);
     }
 
-    const handleDateChange = (val: Date, event: PickerChangeHandlerContext<DateValidationError>) => {
+    const handleDateChange = (val: any, event: any) => {
         console.log("val is: ", JSON.stringify(val));
         console.log("event is: ", JSON.stringify(event));
         setValues({...values, date: val});
