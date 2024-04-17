@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
       const db = client.db("cronbot");
       const service_schedule = await db
           .collection("service_schedule")
-          .find({ date: { $gt: new Date() } })
+          .find({ date: { $gt: (new Date()).toISOString() } })
           .sort({ date: 1})
           .limit(1)
           .toArray();
