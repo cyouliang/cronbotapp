@@ -1,9 +1,26 @@
+'use client';
+
 import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import styles from '@/app/ui/home.module.css';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
+import { Button } from './ui/button';
+
+const fetchAllData = async () => {
+  console.log("Button is clicked");
+
+  let response = await fetch("http://localhost:3000/api/checkdb", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let allPosts = await response.json();
+
+  console.log("all posts returned: ", allPosts);
+}
 
 export default function Page() {
   return (
@@ -27,6 +44,7 @@ export default function Page() {
           >
             <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
+          <Button onClick={fetchAllData}>Fetch</Button>
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
