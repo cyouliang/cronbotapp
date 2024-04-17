@@ -16,7 +16,7 @@ let url = '';
 if(process.env.NODE_ENV !== 'production') {
     url = 'http://localhost:3000';
 } else {
-    url = 'https://cronbot-app.vercel.app/';
+    url = 'https://cronbot-app.vercel.app';
 }
 
 type Values = {
