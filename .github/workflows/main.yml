@@ -1,0 +1,13 @@
+name: Cron jobs
+on:
+  schedule:
+  - cron: '* * * * *' # every min
+  workflow_dispatch: # can handly trigger on Actions page
+jobs:
+  lobsterss:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: https://cyl-cronbot.onrender.com/api
