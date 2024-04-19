@@ -2,9 +2,9 @@ name: Cron jobs
 on:
   schedule:
   - cron: '* * * * *' # every min
-  workflow_dispatch: # can handly trigger on Actions page
+  #workflow_dispatch: # can handly trigger on Actions page
 jobs:
-  lobsterss:
+  cronbot:
     runs-on: ubuntu-latest
     steps:
     - name: curl
