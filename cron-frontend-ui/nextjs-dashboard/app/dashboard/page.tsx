@@ -39,11 +39,12 @@ export default function Page() {
         } else {
             try {
                 let response = await fetch(`${url}/api/fetchAllData`);
+                console.log("response is = ", response);
                 let data = await response.json();
-                setScheduleMasterList(data);
-                if (scheduleMasterList.length > 0) {
+                if (data.length > 0) {
                     setExpandTable(true);
                 }
+                setScheduleMasterList(data);
             }
             catch (err) {
                 alert(err);
