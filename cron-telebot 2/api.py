@@ -17,7 +17,6 @@ from bot.ptb import lifespan
 
 
 app = FastAPI(lifespan=lifespan) if config.ENV else FastAPI()
-print("APP " , app)
 Instrumentator().instrument(app).expose(app)
 cpu_usage = Gauge("cpu_usage", "CPU Usage")
 memory_usage = Gauge("memory_usage", "Memory Usage")
@@ -73,7 +72,6 @@ def run():
 def batch_jobs(db_service: mongo.MongoService, entries: list, parsed_time: str):
     q = []
     for entry in entries:
-        print("entry is ", entry)
         args = (
             db_service,
             entry,
@@ -89,7 +87,6 @@ def batch_jobs(db_service: mongo.MongoService, entries: list, parsed_time: str):
 
 def process_job(db_service: mongo.MongoService, entry, parsed_time):
     service_schedule = dbutils.find_upcoming_entry(mongo.MongoService())
-    print("service_schedule", service_schedule)
     job_id = entry["_id"]
     channel_id = entry.get("channel_id", "")
     chat_id = entry.get("chat_id", "")
@@ -108,7 +105,6 @@ def process_job(db_service: mongo.MongoService, entry, parsed_time):
     errors = entry.get("errors", [])
 
     user_bot_token = entry.get("user_bot_token")
-    print("user bot token is ", user_bot_token)
     if user_bot_token is None:
         user_bot_token = config.TELEGRAM_BOT_TOKEN
 
