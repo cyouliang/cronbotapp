@@ -57,11 +57,8 @@ add_handlers(ptb)
 
 # Use webhook when running in prod (via gunicorn)
 if config.ENV:
-    print("TEST TEST")
-
     @app.post("/")
     async def process_update(request: Request):
-        print("HERE HERE")
         req = await request.json()
         update = Update.de_json(req, ptb.bot)
         await ptb.process_update(update)
@@ -70,11 +67,8 @@ if config.ENV:
 
 # Use polling when running locally
 if __name__ == "__main__":
-    print("RUNNING LOCALLY")
     if not config.ENV:
-        print("POLLING")
         ptb.run_polling()
     else:
         # Used for testing webhook locally, instructions for how to set up local webhook at https://dev.to/ibrarturi/how-to-test-webhooks-on-your-localhost-3b4f
-        print("WEBHOOK")
         uvicorn.run(app, host="0.0.0.0", port=8000)
