@@ -1,7 +1,7 @@
 name: Cron jobs
 on:
   schedule:
-  - cron: '0/5, * * * *' # every min
+  - cron: '0/5, * * * *' # every 5 mins
   #workflow_dispatch: # can handly trigger on Actions page
 jobs:
   cronbot:
