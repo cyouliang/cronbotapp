@@ -2,7 +2,7 @@ name: Cron jobs
 on:
   schedule:
   - cron: '*/5 * * * *' # default every 5 mins
-  #workflow_dispatch: # can handly trigger on Actions page
+  workflow_dispatch: # can handly trigger on Actions page
 jobs:
   cronbot:
     runs-on: ubuntu-latest
