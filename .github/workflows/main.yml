@@ -7,7 +7,6 @@ jobs:
   cronbot:
     runs-on: ubuntu-latest
     steps:
-    - name: curl
-      uses: wei/curl@master
-      with:
-        args: https://cyl-cronbot.onrender.com/api
+        - name: Use curl to ping webhook
+          run: | 
+            curl -n "https://cyl-cronbot.onrender.com/api"
