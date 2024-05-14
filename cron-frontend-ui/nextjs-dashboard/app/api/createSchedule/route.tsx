@@ -19,7 +19,19 @@ export async function POST(req: NextRequest) {
                 serving_username: username,
                 email: email,
             });
-        return NextResponse.json(service_schedule);
+        
+        if (service_schedule.insertedId) {
+            return NextResponse.json({
+                success: true,
+                message: "Schedule created successfully",
+                status: 200
+            });
+        } else {
+            return NextResponse.json({
+                success: false,
+                message: "Failed to create schedule",
+            }, { status: 500 });
+        }
     } catch (e) {
         console.error(e);
     }
