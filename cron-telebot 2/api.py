@@ -66,6 +66,7 @@ def run():
     if config.INFLUXDB_TOKEN:
         dbutils.save_msg_count(entry_count)
     log.log_completion(entry_count)
+    print(Response(status_code=HTTPStatus.OK))
     return Response(status_code=HTTPStatus.OK)
 
 
