@@ -56,7 +56,8 @@ def run():
     if entry_count < 1:
         log.log_completion(0)
         gc.collect()
-        return Response(status_code=HTTPStatus.OK)
+        print("Returned response is :: ", Response(status_code=HTTPStatus.OK))
+        return "OK"
 
     for i in range(0, len(entries), config.BATCH_SIZE):
         batch = entries[i : i + config.BATCH_SIZE]
