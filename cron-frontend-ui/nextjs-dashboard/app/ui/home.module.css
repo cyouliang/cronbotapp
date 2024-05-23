@@ -19,6 +19,10 @@
     padding: 10px;
   }
 
+  .loginBtn {
+    display: inline-block;
+  }
+
   .titleHeader {
     font-family: "Georgia, serif";
     font-size: 3em;
@@ -42,7 +46,7 @@
     background-color: whitesmoke;
     padding: 10px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 
   .form {

@@ -62,14 +62,15 @@ export default function Page() {
             <div className={styles.topContainer}>
                 <h2 className={styles.titleHeader}>Duty Roster</h2>
                 <div className={styles.serviceCard}>
-                    {
-                    serviceSchedule.map((entry: service_schedule) => (
-                            <div className={styles.serviceText} key={entry._id}>
-                                <p style={{textDecoration: "underline"}}>Upcoming personnel on duty:</p>
-                                <p>-- {dateFormat(entry.date, "dddd, mmmm dS, yyyy")}</p>
-                                <p>-- {entry.serving_person}</p>
-                            </div>
-                    ))
+                    { serviceSchedule.length > 0?
+                        (serviceSchedule.map((entry: service_schedule) => (
+                                <div className={styles.serviceText} key={entry._id}>
+                                    <p style={{textDecoration: "underline"}}>Upcoming personnel on duty:</p>
+                                    <p>-- {dateFormat(entry.date, "dddd, mmmm dS, yyyy")}</p>
+                                    <p>-- {entry.serving_person}</p>
+                                </div>
+                        ))) :
+                        (<div className={styles.serviceText}>There is no upcoming schedule...</div>)
                     }
                 </div>
                 <div className="styles.btnContainer">
