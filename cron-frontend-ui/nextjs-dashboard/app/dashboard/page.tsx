@@ -29,7 +29,7 @@ export default function Page() {
     const [ scheduleMasterList, setScheduleMasterList ] = useState([]);
     const [ expandTable, setExpandTable ] = useState(false);
 
-    const fetcher = (url: any) => fetch(url).then((res) => res.json()).then((data) => setServiceSchedule(data))
+    const fetcher = (url: any) => fetch(url, {method: "POST"}).then((res) => res.json()).then((data) => setServiceSchedule(data))
 
     const {data, error} = useSWR(`${url}/api/fetchUpcomingData`, fetcher, { refreshInterval: 60000 });
 
@@ -47,7 +47,9 @@ export default function Page() {
             setExpandTable(true);
         } else {
             try {
-                let response = await fetch(`${url}/api/fetchAllData`);
+                let response = await fetch(`${url}/api/fetchAllData`,  {
+                    method: "POST"
+                });
                 console.log("response is = ", response);
                 let data = await response.json();
                 if (data.length > 0) {
