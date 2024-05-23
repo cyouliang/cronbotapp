@@ -6,6 +6,7 @@ import dateFormat from 'dateformat';
 import styles from '@/app/ui/home.module.css';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import useSWR from 'swr';
+export const dynamic = 'force-dynamic'
 
 let url = '';
 
