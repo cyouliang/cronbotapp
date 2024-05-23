@@ -5,8 +5,8 @@ import { Button } from "../ui/button";
 import dateFormat from 'dateformat';
 import styles from '@/app/ui/home.module.css';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import useSWR from 'swr';
-export const dynamic = 'force-dynamic'
+// import useSWR from 'swr';
+// export const dynamic = 'force-dynamic'
 
 let url = '';
 
@@ -29,18 +29,20 @@ export default function Page() {
     const [ scheduleMasterList, setScheduleMasterList ] = useState([]);
     const [ expandTable, setExpandTable ] = useState(false);
 
-    const fetcher = (url: any) => fetch(url, {method: "POST"}).then((res) => res.json()).then((data) => setServiceSchedule(data))
+    // const fetcher = (url: any) => fetch(url, {method: "POST"}).then((res) => res.json()).then((data) => setServiceSchedule(data))
 
-    const {data, error} = useSWR(`${url}/api/fetchUpcomingData`, fetcher, { refreshInterval: 60000 });
+    // const {data, error} = useSWR(`${url}/api/fetchUpcomingData`, fetcher, { refreshInterval: 60000 });
 
-    if (error || !data) {
-        console.log("Error fetching data");
-    }
-    // useEffect(() => {
-        // fetch(`${url}/api/fetchUpcomingData`)
-        // .then((res) => res.json())
-        // .then((data) => setServiceSchedule(data))
-    // },[]);
+    // if (error || !data) {
+    //     console.log("Error fetching data");
+    // }
+    useEffect(() => {
+        fetch(`${url}/api/fetchUpcomingData`, {
+            method: "POST"
+        })
+        .then((res) => res.json())
+        .then((data) => setServiceSchedule(data))
+    },[]);
 
     const fetchAllData = async () => {
         if (scheduleMasterList.length > 0) {
