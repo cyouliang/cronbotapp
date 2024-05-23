@@ -15,5 +15,6 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(service_schedule);
     } catch (e) {
         console.error(e);
+        return NextResponse.json({ error: 'Failed to load data'})
     }
   }
