@@ -31,6 +31,13 @@ else
     pip3 install fastapi
 fi
 
+if pip3 list | grep -q 'telegram'; then
+    echo "Telegram is installed."
+else
+    echo "Telegram is not installed. Installing..."
+    pip3 install telegram
+fi
+
 # nodejs-app is the same name as stored in pm2 process
 echo 'gunicorn main:app -k uvicorn.workers.UvicornWorker --timeout 60'
 gunicorn main:app -k uvicorn.workers.UvicornWorker --timeout 60
