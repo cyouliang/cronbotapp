@@ -24,6 +24,13 @@ else
     pip3 install uvicorn
 fi
 
+if pip3 list | grep -q 'fastapi'; then
+    echo "FastApi is installed."
+else
+    echo "FastApi is not installed. Installing..."
+    pip3 install fastapi
+fi
+
 # nodejs-app is the same name as stored in pm2 process
 echo 'gunicorn main:app -k uvicorn.workers.UvicornWorker --timeout 60'
 gunicorn main:app -k uvicorn.workers.UvicornWorker --timeout 60
