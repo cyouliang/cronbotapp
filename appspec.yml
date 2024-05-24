@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /cron-telebot\ 2
+  - source: /cron-telebot 2
     destination: /home/ec2-user/cronbotapp
 hooks:
   BeforeInstall:
