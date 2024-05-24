@@ -42,7 +42,7 @@ if pip3 list | grep -q 'typing_extensions'; then
     echo "Typing_extensions is installed."
 else
     echo "Typing_extensions is not installed. Installing..."
-    pip3 install typing_extensions==4.7.1
+    pip3 install typing_extensions==4.7.1 --upgrade
 fi
 
 # nodejs-app is the same name as stored in pm2 process
