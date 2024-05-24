@@ -4,6 +4,9 @@ echo 'run application_start.sh: '
 
 set -e
 
+# Set environment variable
+export env=prod
+
 cd /home/ec2-user/cronbotapp
 
 # Check if Gunicorn is installed

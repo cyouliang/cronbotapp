@@ -14,7 +14,7 @@ BOT_NAME = "@seewaielle_bot"
 
 """ Telegram config """
 TELEGRAM_BOT_TOKEN = "6921071763:AAEqZZuhZC1223sCEb11PPR0EaCG8vtxsjM"
-BOTHOST = "https://cyl-cronbot.onrender.com/" # only required in prod environment, used to set webhook
+BOTHOST = '3.1.204.188' # "https://cyl-cronbot.onrender.com/" # only required in prod environment, used to set webhook
 
 
 """ DB config """
