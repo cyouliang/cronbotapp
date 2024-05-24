@@ -40,4 +40,6 @@ fi
 # echo "Upgrading pip..."
 # sudo -H pip3 install --upgrade pip
 
+sudo pip3 install virtualenv
+
 echo "Before_install script completed."
