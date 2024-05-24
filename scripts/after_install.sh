@@ -13,6 +13,6 @@ source venv/bin/activate
 echo 'pip install -r requirements.txt'
 
 sudo pip3 freeze > requirements.txt
-sudo pip3 install -r requirements.txt
+sudo pip3 install --upgrade --force-reinstall -r requirements.txt
 
 echo "All dependencies are installed."
