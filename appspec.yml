@@ -5,11 +5,11 @@ files:
     destination: /cron-telebot2
 hooks:
   AfterInstall:
-    - location: scripts/install_dependencies.sh
+    - location: scripts/after_install.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: scripts/start_server.sh
+    - location: scripts/application_start.sh
       timeout: 300
       runas: root
   # ApplicationStop:
