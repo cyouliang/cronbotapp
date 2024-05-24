@@ -1,10 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: source
+  - source: /
     destination: /cron-telebot2
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
       runas: root

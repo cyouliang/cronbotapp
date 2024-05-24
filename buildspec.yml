@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - cd "cron-telebot 2"
+  build:
+    commands:
+      - echo Build started on `date`
+      - pip install -r requirements.txt
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/messageUtil-1.0.jar

@@ -1,0 +1,8 @@
+template-file-path: ./CF_template.yml
+
+parameters:
+  image: public.ecr.aws/lts/nginx:latest
+  task_size: size
+  max_capacity: 11
+  port: 80
+  env: prod
