@@ -37,7 +37,7 @@ fi
 # sudo apt-get install -y <other-dependencies>
 
 # Upgrade pip to the latest version
-echo "Upgrading pip..."
-sudo -H pip3 install --upgrade pip
+# echo "Upgrading pip..."
+# sudo -H pip3 install --upgrade pip
 
 echo "Before_install script completed."
